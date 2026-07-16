@@ -252,11 +252,29 @@
                                 <div>
                                     <h2 class="text-2xl font-semibold text-black mb-4">Artist information</h2>
                                     <div class="space-y-4">
+                                        <!-- Primary Artist - DIUBAH MENJADI SELECT -->
                                         <div>
                                             <label class="block text-md font-semibold text-[#3F3F3F] mb-2">Primary
                                                 Artist</label>
-                                            <input type="text" id="field-primary-artist" placeholder="Name of primary artist"
-                                                class="bg-[#F5F5F5] w-full px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
+                                            <div class="relative">
+                                                <select id="field-primary-artist"
+                                                    class="bg-[#F5F5F5] w-full px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] cursor-pointer transition duration-150 ease-in-out appearance-none">
+                                                    <option disabled selected hidden>Select primary artist</option>
+                                                    <option value="Artist 1">Artist 1</option>
+                                                    <option value="Artist 2">Artist 2</option>
+                                                    <option value="Artist 3">Artist 3</option>
+                                                    <!-- Tambahkan opsi sesuai kebutuhan -->
+                                                </select>
+                                                <div
+                                                    class="absolute right-2 top-1/2 -translate-y-1/2 text-[#374151] pointer-events-none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="lucide lucide-chevron-right-icon lucide-chevron-right">
+                                                        <path d="m9 18 6-6-6-6" />
+                                                    </svg>
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div>
@@ -543,7 +561,8 @@
                                                 <label class="block text-md font-semibold text-[#3F3F3F]">Publishing
                                                     Copyright</label>
                                             </div>
-                                            <input type="text" id="field-publishing-copyright" placeholder="e.g. 2025 Meluna"
+                                            <input type="text" id="field-publishing-copyright"
+                                                placeholder="e.g. 2025 Meluna"
                                                 class="bg-[#F5F5F5] w-full px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
                                         </div>
                                         <div>
@@ -552,7 +571,8 @@
                                                 <label class="block text-md font-semibold text-[#3F3F3F]">Composition
                                                     Copyright</label>
                                             </div>
-                                            <input type="text" id="field-composition-copyright" placeholder="e.g. 2025 Meluna"
+                                            <input type="text" id="field-composition-copyright"
+                                                placeholder="e.g. 2025 Meluna"
                                                 class="bg-[#F5F5F5] w-full px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
                                         </div>
                                     </div>
@@ -912,53 +932,71 @@
 
                 <div>
                   <label class="block text-md font-semibold text-[#3F3F3F] mb-2">Primary Artist</label>
-                  <input type="text" placeholder="Enter Primary Artists name" data-field="primaryArtist" value="${track.primaryArtist}"
-                    class="track-input bg-[#F5F5F5] w-full px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
+                  <div class="relative">
+                    <select data-field="primaryArtist"
+                      class="track-input bg-[#F5F5F5] w-full px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] cursor-pointer transition duration-150 ease-in-out appearance-none">
+                      <option value="" disabled ${!track.primaryArtist ? 'selected' : ''} hidden>Select primary artist</option>
+                      <option value="Artist 1" ${track.primaryArtist === 'Artist 1' ? 'selected' : ''}>Artist 1</option>
+                      <option value="Artist 2" ${track.primaryArtist === 'Artist 2' ? 'selected' : ''}>Artist 2</option>
+                      <option value="Artist 3" ${track.primaryArtist === 'Artist 3' ? 'selected' : ''}>Artist 3</option>
+                    </select>
+                    <div class="absolute right-2 top-1/2 -translate-y-1/2 text-[#374151] pointer-events-none">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right">
+                        <path d="m9 18 6-6-6-6" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div>
                   <label class="block text-md font-semibold text-[#3F3F3F] mb-2">Featured Artist</label>
-                  <div class="flex items-center gap-2">
-                    <input type="text" placeholder="Enter Features Artists name"
-                      class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
-                    <button type="button" class="text-[#374151] hover:text-black cursor-pointer p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </button>
+                  <div class="dynamic-input-container space-y-3">
+                    <div class="flex items-center gap-2">
+                      <input type="text" placeholder="Enter Features Artists name"
+                        class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
+                      <button type="button" onclick="addTrackInput(this, 'Enter Features Artists name')" class="text-[#374151] hover:text-black cursor-pointer p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                          <path d="M5 12h14" />
+                          <path d="M12 5v14" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
                 <div>
                   <label class="block text-md font-semibold text-[#3F3F3F] mb-2">Remixer</label>
-                  <div class="flex items-center gap-2">
-                    <input type="text" placeholder="Enter Remixer name"
-                      class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
-                    <button type="button" class="text-[#374151] hover:text-black cursor-pointer p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </button>
+                  <div class="dynamic-input-container space-y-3">
+                    <div class="flex items-center gap-2">
+                      <input type="text" placeholder="Enter Remixer name"
+                        class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
+                      <button type="button" onclick="addTrackInput(this, 'Enter Remixer name')" class="text-[#374151] hover:text-black cursor-pointer p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                          <path d="M5 12h14" />
+                          <path d="M12 5v14" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
                 <div>
                   <label class="block text-md font-semibold text-[#3F3F3F] mb-2">Other Contributors</label>
-                  <div class="flex items-center gap-2">
-                    <select class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] border border-[#D6D6D6] focus:border-[#302995] cursor-pointer transition duration-150 ease-in-out appearance-none">
-                      <option disabled selected hidden>Role: Contributors</option>
-                      <option>Producer</option>
-                      <option>Songwriter</option>
-                      <option>Composer</option>
-                    </select>
-                    <button type="button" class="text-[#374151] hover:text-black cursor-pointer p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </button>
+                  <div class="dynamic-contributor-container space-y-3">
+                    <div class="flex items-center gap-2">
+                      <select class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] border border-[#D6D6D6] focus:border-[#302995] cursor-pointer transition duration-150 ease-in-out appearance-none">
+                        <option disabled selected hidden>Role: Contributors</option>
+                        <option>Producer</option>
+                        <option>Songwriter</option>
+                        <option>Composer</option>
+                      </select>
+                      <button type="button" onclick="addTrackContributor(this)" class="text-[#374151] hover:text-black cursor-pointer p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                          <path d="M5 12h14" />
+                          <path d="M12 5v14" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1004,43 +1042,49 @@
 
                 <div>
                   <label class="block text-md font-semibold text-[#3F3F3F] mb-2">Composer's</label>
-                  <div class="flex items-center gap-2">
-                    <input type="text" placeholder="Enter Composer's name"
-                      class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
-                    <button type="button" class="text-[#374151] hover:text-black cursor-pointer p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </button>
+                  <div class="dynamic-input-container space-y-3">
+                    <div class="flex items-center gap-2">
+                      <input type="text" placeholder="Enter Composer's name"
+                        class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
+                      <button type="button" onclick="addTrackInput(this, 'Enter Composer\'s name')" class="text-[#374151] hover:text-black cursor-pointer p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                          <path d="M5 12h14" />
+                          <path d="M12 5v14" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
                 <div>
                   <label class="block text-md font-semibold text-[#3F3F3F] mb-2">Lyricist</label>
-                  <div class="flex items-center gap-2">
-                    <input type="text" placeholder="Enter Lyricist name"
-                      class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
-                    <button type="button" class="text-[#374151] hover:text-black cursor-pointer p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </button>
+                  <div class="dynamic-input-container space-y-3">
+                    <div class="flex items-center gap-2">
+                      <input type="text" placeholder="Enter Lyricist name"
+                        class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
+                      <button type="button" onclick="addTrackInput(this, 'Enter Lyricist name')" class="text-[#374151] hover:text-black cursor-pointer p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                          <path d="M5 12h14" />
+                          <path d="M12 5v14" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
                 <div>
                   <label class="block text-md font-semibold text-[#3F3F3F] mb-2">Songwriter's</label>
-                  <div class="flex items-center gap-2">
-                    <input type="text" placeholder="Enter Songwriter name"
-                      class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
-                    <button type="button" class="text-[#374151] hover:text-black cursor-pointer p-1">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-                        <path d="M5 12h14" />
-                        <path d="M12 5v14" />
-                      </svg>
-                    </button>
+                  <div class="dynamic-input-container space-y-3">
+                    <div class="flex items-center gap-2">
+                      <input type="text" placeholder="Enter Songwriter name"
+                        class="bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out">
+                      <button type="button" onclick="addTrackInput(this, 'Enter Songwriter name')" class="text-[#374151] hover:text-black cursor-pointer p-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
+                          <path d="M5 12h14" />
+                          <path d="M12 5v14" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
 
@@ -1292,11 +1336,11 @@
             // =========================================================
             function validateStep1() {
                 const requiredFields = [
-                    { id: 'field-title',                  label: 'Release Title' },
-                    { id: 'field-primary-artist',         label: 'Primary Artist' },
-                    { id: 'field-label',                  label: 'Label Name' },
-                    { id: 'field-publishing-copyright',   label: 'Publishing Copyright' },
-                    { id: 'field-composition-copyright',  label: 'Composition Copyright' },
+                    { id: 'field-title', label: 'Release Title' },
+                    { id: 'field-primary-artist', label: 'Primary Artist' },
+                    { id: 'field-label', label: 'Label Name' },
+                    { id: 'field-publishing-copyright', label: 'Publishing Copyright' },
+                    { id: 'field-composition-copyright', label: 'Composition Copyright' },
                 ];
 
                 let firstInvalid = null;
@@ -1505,6 +1549,77 @@
                     }
                 }
             });
+
+            // Helper functions for dynamic fields in Track Form (Step 2)
+            function addTrackInput(btn, placeholder) {
+                const container = btn.closest('.dynamic-input-container');
+                if (!container) return;
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'flex items-center gap-2 mt-3';
+
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = placeholder;
+                input.className =
+                    'bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] transition duration-150 ease-in-out';
+                input.required = true;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'text-[#374151] hover:text-red-500 cursor-pointer p-1';
+                removeBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+                        <path d="M18 6 6 18"/>
+                        <path d="m6 6 12 12"/>
+                    </svg>
+                `;
+                removeBtn.addEventListener('click', function () {
+                    wrapper.remove();
+                });
+
+                wrapper.appendChild(input);
+                wrapper.appendChild(removeBtn);
+                container.appendChild(wrapper);
+                input.focus();
+            }
+
+            function addTrackContributor(btn) {
+                const container = btn.closest('.dynamic-contributor-container');
+                if (!container) return;
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'flex items-center gap-2 mt-3';
+
+                const select = document.createElement('select');
+                select.className =
+                    'bg-[#F5F5F5] flex-1 px-4 py-2 rounded-sm outline-none text-[#1F1F1F] placeholder:text-[#D6D6D6] border border-[#D6D6D6] focus:border-[#302995] cursor-pointer transition duration-150 ease-in-out appearance-none';
+                select.required = true;
+                select.innerHTML = `
+                    <option disabled selected hidden>Role: Contributors</option>
+                    <option>Producer</option>
+                    <option>Songwriter</option>
+                    <option>Composer</option>
+                `;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'text-[#374151] hover:text-red-500 cursor-pointer p-1';
+                removeBtn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+                        <path d="M18 6 6 18"/>
+                        <path d="m6 6 12 12"/>
+                    </svg>
+                `;
+                removeBtn.addEventListener('click', function () {
+                    wrapper.remove();
+                });
+
+                wrapper.appendChild(select);
+                wrapper.appendChild(removeBtn);
+                container.appendChild(wrapper);
+                select.focus();
+            }
 
             // Fungsi global untuk Featured Artist (dengan ikon X)
             function addNewInput() {
